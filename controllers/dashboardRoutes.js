@@ -45,4 +45,8 @@ router.get("/", withAuth, async (req, res, next) => {
   }
 });
 
+// app.get("/parentForm", (req, res) => {
+//   res.render("parentForm"); 
+// });
+
 module.exports = router;
