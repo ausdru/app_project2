@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const userRoutes = require("./userRoutes");
+const adminRoutes = require("./adminRoutes");
 const { errorHandler, notFoundHandler } = require("../../utils/helpers");
 
-router.use("/users", userRoutes);
+router.use("/admin", adminRoutes);
 
 
 router.use(notFoundHandler);

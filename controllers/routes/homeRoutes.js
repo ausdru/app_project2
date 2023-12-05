@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { User, Post, Comment } = require("../models");
-const { errorHandler, notFoundHandler } = require("../utils/helpers");
+const { User, Post, Comment } = require("../../models");
+const { errorHandler, notFoundHandler } = require("../../utils/helpers");
 
 router.get("/", async (req, res, next) => {
   try {
