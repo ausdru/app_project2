@@ -1,20 +1,19 @@
 // Role_type.js
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const { DescriptionCDT, IdCDT, NameCDT } = require('./customDataTypes');
 
 class Role_type extends Model { }
 
 Role_type.init(
     {
         role_type_id: {
-            type: IdCDT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
         description: {
-            type: DescriptionCDT,
+            type: DataTypes.STRING,
             allowNull: false,
         },
     },

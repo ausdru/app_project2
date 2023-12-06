@@ -1,25 +1,24 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const { DescriptionCDT, IdCDT, NameCDT } = require('./customDataTypes');
 
 class Course extends Model {}
 
 Course.init(
   {
     course_id: {
-      type: IdCDT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
      },
     title: {
-      type: NameCDT,
+      type: DataTypes.STRING(40),
       allowNull: false,
       primaryKey: false,
       autoIncrement: false,
     },
     description: {
-      type: DescriptionCDT,
+      type: DataTypes.STRING,
       allowNull: false,
       primaryKey: false,
       autoIncrement: false,

@@ -1,7 +1,6 @@
 // Class.js
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const { IdCDT } = require('./customDataTypes');
 const Course = require('./Course');
 const Teacher = require('./Teacher');
 
@@ -10,13 +9,13 @@ class Class extends Model {}
 Class.init(
   {
     class_id: {
-      type: IdCDT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
     course_id: {
-      type: IdCDT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: Course,
@@ -24,7 +23,7 @@ Class.init(
       },
     },
     teacher_id: {
-      type: IdCDT,
+      type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: Teacher,

@@ -1,36 +1,35 @@
 // Teacher.js
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const { IdCDT, NameCDT } = require('./customDataTypes');
 
 class Person extends Model { }
 
 Person.init(
     {
         person_id: {
-            type: IdCDT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
         last_name: {
-            type: NameCDT,
+            type: DataTypes.STRING(40),
             allowNull: false,
         },
         first_name: {
-            type: NameCDT,
+            type: DataTypes.STRING(40),
             allowNull: false,
         },
         middle_name: {
-            type: NameCDT,
+            type: DataTypes.STRING(40),
             allowNull: true,
         },
         suffix: {
-            type: NameCDT,
+            type: DataTypes.STRING(40),
             allowNull: true,
         },
         personal_title: {
-            type: NameCDT,
+            type: DataTypes.STRING(40),
             allowNull: true,
         },
     },

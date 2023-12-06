@@ -1,7 +1,6 @@
 // Teacher.js
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const { IdCDT, longVarchar, shortVarchar } = require('./customDataTypes');
 const Person = require('./Person');
 
 class Teacher extends Model { }
@@ -9,7 +8,7 @@ class Teacher extends Model { }
 Teacher.init(
     {
         teacher_id: {
-            type: IdCDT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -19,11 +18,11 @@ Teacher.init(
               },
                 },
         email_address: {
-            type: longVarchar,
+            type: DataTypes.STRING,
             allowNull: true,
         },
         phone_number: {
-            type: shortVarchar,
+            type: DataTypes.STRING(40),
             allowNull: true,
         },
     },
