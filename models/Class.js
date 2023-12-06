@@ -3,13 +3,14 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const { IdCDT } = require('./customDataTypes');
 const Course = require('./Course');
+const Teacher = require('./Teacher');
 
 class Class extends Model {}
 
 Class.init(
   {
     class_id: {
-      type: DataTypes.INTEGER,
+      type: IdCDT,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
@@ -23,8 +24,12 @@ Class.init(
       },
     },
     teacher_id: {
-      type: DataTypes.INTEGER,
+      type: IdCDT,
       allowNull: true,
+      references: {
+        model: Teacher,
+        key: 'teacher_id',
+      },
     },
     begin_dt: {
       type: DataTypes.DATE,

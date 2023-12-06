@@ -1,7 +1,7 @@
 // Role_type.js
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const { IdCDT, NameCDT } = require('./customDataTypes');
+const { DescriptionCDT, IdCDT, NameCDT } = require('./customDataTypes');
 
 class Role_type extends Model { }
 

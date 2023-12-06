@@ -3,6 +3,7 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const { IdCDT, NameCDT } = require('./customDataTypes');
 const Person = require('./Person');
+const Role_type = require('./Role_type');
 
 class Login extends Model { }
 
@@ -14,6 +15,16 @@ Login.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        role_type_id: {
+            type: IdCDT,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: false,
+            references: {
+                model: Role_type,
+                key: 'role_type_id',
+              },
+        },
         person_id: {
             type: IdCDT,
             allowNull: false,
@@ -24,32 +35,19 @@ Login.init(
                 key: 'person_id',
               },
               },
-        role_type_id: {
-            type: IdCDT,
-            allowNull: false,
-            primaryKey: false,
-            autoIncrement: false,
-        },
         user_name: {
             type: NameCDT,
             allowNull: false,
-        },
-        from_date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: false,
-        },
-        thru_date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            primaryKey: false,
-            autoIncrement: false,
         },
         password: {
             type: NameCDT,
             allowNull: false,
         },
+       is_active: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true,
+        }    
     },
     {
         sequelize,

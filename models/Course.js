@@ -2,7 +2,6 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const { DescriptionCDT, IdCDT, NameCDT } = require('./customDataTypes');
 
-const Class = require('./Class'); // Import the Class model
 class Course extends Model {}
 
 Course.init(

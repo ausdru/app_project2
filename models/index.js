@@ -17,6 +17,12 @@ Teacher.belongsTo(Person, {
 Person.hasMany(Teacher, {
   foreignKey: 'person_id'
 });
+Teacher.belongsTo(Class, {
+  foreignKey: 'teacher_id'
+});
+Class.hasMany(Teacher, {
+  foreignKey: 'person_id'
+});
 Login.belongsTo(Person, {
   foreignKey: 'person_id'
 });
@@ -24,8 +30,6 @@ Person.hasMany(Login, {
   foreignKey: 'person_id'
 });
 
-module.exports = {User,
-  Post,
-  Comment,
+module.exports = {Course, Class, Teacher, Person, Login, StudentProfile
 };
   

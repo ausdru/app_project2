@@ -39,7 +39,7 @@ Person.init(
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: "Teacher",
+        modelName: "Person",
     }
 );
 
