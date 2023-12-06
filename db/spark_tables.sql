@@ -14,6 +14,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Table `Person`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Person` ;
+
 CREATE TABLE IF NOT EXISTS `Person` (
   `party_id` INT NOT NULL AUTO_INCREMENT,
   `last_name` VARCHAR(40) NOT NULL,
@@ -28,6 +30,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Role_type`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Role_type` ;
+
 CREATE TABLE IF NOT EXISTS `Role_type` (
   `role_type_id` INT NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(255) NOT NULL,
@@ -38,6 +42,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Login`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Login` ;
+
 CREATE TABLE IF NOT EXISTS `Login` (
   `login_id` INT NOT NULL AUTO_INCREMENT,
   `role_type_id` INT NOT NULL,
@@ -64,6 +70,8 @@ COMMENT = '		';
 -- -----------------------------------------------------
 -- Table `Course`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Course` ;
+
 CREATE TABLE IF NOT EXISTS `Course` (
   `course_id` INT NOT NULL,
   `title` VARCHAR(40) NOT NULL,
@@ -75,9 +83,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Teacher`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Teacher` ;
+
 CREATE TABLE IF NOT EXISTS `Teacher` (
   `teacher_id` INT NOT NULL,
-  `email_address` VARCHAR(255) NULL,
+  `email_address` VARCHAR(40) NULL,
   `phone_number` VARCHAR(40) NULL,
   PRIMARY KEY (`teacher_id`),
   INDEX `fk_teacher_person1_idx` (`teacher_id` ASC) VISIBLE,
@@ -92,6 +102,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Class`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Class` ;
+
 CREATE TABLE IF NOT EXISTS `Class` (
   `class_id` INT NOT NULL,
   `course_id` INT NOT NULL,
