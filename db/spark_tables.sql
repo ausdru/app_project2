@@ -1,3 +1,4 @@
+-- spark_tables.sql
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -38,33 +39,26 @@ CREATE TABLE IF NOT EXISTS `Role_type` (
   PRIMARY KEY (`role_type_id`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table `Login`
+-- Table `User`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Login` ;
 
-CREATE TABLE IF NOT EXISTS `Login` (
-  `login_id` INT NOT NULL AUTO_INCREMENT,
-  `role_type_id` INT NOT NULL,
-  `party_id` INT NOT NULL,
-  `userName` VARCHAR(40) NOT NULL,
-  `password` VARCHAR(40) NOT NULL,
-  `isActive` TINYINT NOT NULL DEFAULT 1,
-  PRIMARY KEY (`login_id`, `role_type_id`),
-  INDEX `fk_login_role_type1_idx` (`role_type_id` ASC) VISIBLE,
-  CONSTRAINT `fk_login_person1`
-    FOREIGN KEY (`party_id`)
-    REFERENCES `Person` (`party_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_login_role_type1`
-    FOREIGN KEY (`role_type_id`)
-    REFERENCES `Role_type` (`role_type_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-COMMENT = '		';
+DROP TABLE IF EXISTS `user` ;
+
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `isActive` tinyint(1) DEFAULT '1',
+  `person_party_id` int DEFAULT NULL,
+  `role_type_id` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `fk_User_Person1_idx` (`person_party_id`),
+  KEY `fk_User_Role_type1_idx` (`role_type_id`),
+  CONSTRAINT `fk_User_Person1` FOREIGN KEY (`person_party_id`) REFERENCES `person` (`party_id`),
+  CONSTRAINT `fk_User_Role_type1` FOREIGN KEY (`role_type_id`) REFERENCES `role_type` (`role_type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
 
 
 -- -----------------------------------------------------
@@ -73,7 +67,7 @@ COMMENT = '		';
 DROP TABLE IF EXISTS `Course` ;
 
 CREATE TABLE IF NOT EXISTS `Course` (
-  `course_id` INT NOT NULL,
+  `course_id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(40) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`course_id`))
@@ -98,6 +92,19 @@ CREATE TABLE IF NOT EXISTS `Teacher` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `Parent`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Parent` ;
+
+CREATE TABLE `Parent` (
+  `parent_id` int NOT NULL,
+  `email_address` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `checkout_code` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`parent_id`),
+  CONSTRAINT `fk_Parent_Person` FOREIGN KEY (`parent_id`) REFERENCES `person` (`party_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- -----------------------------------------------------
 -- Table `Class`

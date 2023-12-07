@@ -1,17 +1,17 @@
-// Teacher.js
+// Parent.js
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const Person = require('./Person');
 
-class Teacher extends Model { }
+class Parent extends Model { }
 
-Teacher.init(
+Parent.init(
     {
-        teacher_id: {
+        parent_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true,
+            autoIncrement: false,
             references: {
                 model: Person,
                 key: 'person_id',
@@ -25,13 +25,17 @@ Teacher.init(
             type: DataTypes.STRING(40),
             allowNull: true,
         },
+        checkout_code: {
+            type: DataTypes.STRING(10),
+            allowNull: true,
+        },
     },
     {
         sequelize,
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: "Teacher",
+        modelName: "Parent",
     }
 );
 
