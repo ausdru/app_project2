@@ -1,4 +1,5 @@
-/*INSERT INTO PERSON (`last_name`,`first_name`,
+-- spark_data_refresh.sql
+INSERT INTO PERSON (`last_name`,`first_name`,
   `middle_name` ,
   `suffix`,
   `personal_title`) VALUES ("Jones", "Barnaby", "Willbur", "Jr.", 
@@ -21,31 +22,31 @@
   INSERT INTO role_type (`role_type_id`, `description`) VALUES
   (3, "Student");
   SELECT * FROM role_type;
-INSERT INTO login
+INSERT INTO user
 (`role_type_id`,
-`party_id`,
+`person_party_id`,
 `userName`,
 `password`,
 `isActive`)
 VALUES
 (1,1,"bjones", "detective",1);
-INSERT INTO login
+INSERT INTO user
 (`role_type_id`,
-`party_id`,
+`person_party_id`,
 `userName`,
 `password`,
 `isActive`)
 VALUES
 (1,2,"aenstein", "e=mcsquared",1);
-INSERT INTO login
+INSERT INTO user
 (`role_type_id`,
-`party_id`,
+`person_party_id`,
 `userName`,
 `password`,
 `isActive`)
 VALUES
-(2,3,"mrsmith", "smith&wesson",1);
-select * from login; checkout_codeparent
+(2,3,"mrsmith", "smith&wesson",1); 
+select * from user; 
 INSERT INTO course
 (`title`,
 `description`)
@@ -68,6 +69,6 @@ INSERT INTO Teacher ( `teacher_id`, `email_address`, `phone_number`) VALUES
 select * from teacher;
 INSERT INTO Parent ( `parent_id`, `email_address`, `phone_number`, `checkout_code`) VALUES
 (3, "jsmith@gmail.com","303-271-1935", "1234");
-select * from parent;*/
+select * from parent;
   
   
