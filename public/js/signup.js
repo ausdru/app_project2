@@ -12,14 +12,14 @@ const signUpFormHandler = async (event) => {
     return;
   }
 
-  if (username && password && confirmPassword) {
-    try {
+  if (username && password) {
+    // try {
       const res = await fetch("/api/users/signUp", {
         method: "POST",
         body: JSON.stringify({ username, password }),
         headers: { "Content-Type": "application/json" },
       });
-
+      console.log(username, password);
       if (res.ok) {
         const data = await res.json();
         console.log("User signed up successfully:", data);
@@ -31,10 +31,10 @@ const signUpFormHandler = async (event) => {
           "Failed to sign up. Please check your credentials and try again."
         );
       }
-    } catch (error) {
-      console.error("Error during sign-up:", error);
-      alert("An unexpected error occurred. Please try again later.");
-    }
+    // } catch (error) {
+    //   console.error("Error during sign-up:", error);
+    //   alert("An unexpected error occurred. Please try again later.");
+    // }
   }
 };
 
