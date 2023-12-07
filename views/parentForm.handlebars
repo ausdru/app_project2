@@ -1,42 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emergency Contacts and Allowed Pickups Form</title>
-</head>
-<body>
+ <h1>Emergency Contacts and Allowed Pickups Form</h1>
 
-{{!-- <h1>Emergency Contacts and Allowed Pickups Form</h1>
+    <form id="emergencyForm">
+      <!-- Student Information Section -->
+      <h2>Student Information</h2>
+      
+      <label for="studentName">Student Name:</label>
+      <input type="text" id="studentName" name="studentName" required>
+      
+      <label for="studentEmail">Student Email:</label>
+      <input type="text" id="studentEmail" name="studentEmail" required>
+      
+      <label for="studentBirthDate">Student Birth Date:</label>
+      <input type="date" id="studentBirthDate" name="studentBirthDate" required>
 
-<form id="emergencyForm">
-    <!-- Emergency Contacts Section -->
-    <h2>Emergency Contacts</h2>
-    
-    <label for="emergencyContact1">Emergency Contact 1:</label>
-    <input type="text" id="emergencyContact1" name="emergencyContact1" required>
-    
-    <label for="emergencyPhone1">Phone Number:</label>
-    <input type="tel" id="emergencyPhone1" name="emergencyPhone1" required pattern="[0-9]{10}">
-    
-    <label for="emergencyContact2">Emergency Contact 2:</label>
-    <input type="text" id="emergencyContact2" name="emergencyContact2" required>
-    
-    <label for="emergencyPhone2">Phone Number:</label>
-    <input type="tel" id="emergencyPhone2" name="emergencyPhone2" required pattern="[0-9]{10}">
-    
-    <!-- Allowed Pickups Section -->
-    <h2>Allowed Pickups</h2>
-    
-    <label for="pickupPerson1">Pickup Person 1:</label>
-    <input type="text" id="pickupPerson1" name="pickupPerson1" required>
-    
-    <label for="pickupPerson2">Pickup Person 2:</label>
-    <input type="text" id="pickupPerson2" name="pickupPerson2" required>
-    
-    <!-- Submit Button -->
-    <button type="button" onclick="saveProfile()">Submit</button>
-</form> --}}
+      <!-- Emergency Contacts Section -->
+      <h2>Emergency Contacts</h2>
+      
+      <label for="emergencyContact1">Emergency Contact 1:</label>
+      <input type="text" id="emergencyContact1" name="emergencyContact1" required>
+      
+      <label for="emergencyPhone1">Phone Number:</label>
+      <input type="tel" id="emergencyPhone1" name="emergencyPhone1" required>
+      
+      <label for="emergencyContact2">Emergency Contact 2:</label>
+      <input type="text" id="emergencyContact2" name="emergencyContact2" required>
+      
+      <label for="emergencyPhone2">Phone Number:</label>
+      <input type="tel" id="emergencyPhone2" name="emergencyPhone2" required>
+      
+      <!-- Allowed Pickups Section -->
+      <h2>Allowed Pickups</h2>
+      
+      <label for="pickupPerson1">Pickup Person 1:</label>
+      <input type="text" id="pickupPerson1" name="pickupPerson1" required>
+      
+      <label for="pickupPerson2">Pickup Person 2:</label>
+      <input type="text" id="pickupPerson2" name="pickupPerson2" required>
+
+      <!-- Submit Button -->
+      <button  type="submit">Submit</button>
+    </form>
+
+    <!-- Display Section for submitted data -->
+    <div id="displaySection">
+      <strong>Student Information:</strong>
+      <p><span id="displayName"></span> - <span id="displayEmail"></span> - <span id="displayBirthDate"></span></p>
+      <strong>Emergency Contacts:</strong>
+      <ul>
+        <li id="displayEmergency1"></li>
+        <li id="displayEmergency2"></li>
+      </ul>
+      <strong>Allowed Pickups:</strong>
+      <ul>
+        <li id="displayPickup1"></li>
+        <li id="displayPickup2"></li>
+      </ul>
+    </div>
+  </div>
 
 
 <div id="profile">
@@ -45,7 +65,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-<script src="app.js"></script>
+<script src="/js/saveProfile.js"></script>
 
 </body>
 </html>

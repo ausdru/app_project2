@@ -3,6 +3,8 @@ const loginFormHandler = async (event) => {
 
   const username = document.querySelector("#username").value.trim();
   const password = document.querySelector("#password").value.trim();
+  const isAdmin = document.querySelector("#adminlog").checked;
+
 
   if (username && password) {
     try {
@@ -13,7 +15,12 @@ const loginFormHandler = async (event) => {
       });
 
       if (res.ok) {
-        document.location.replace("/dashboard");
+        // Check if the "Administrator/teacher" checkbox is checked
+        if (isAdmin) {
+          document.location.replace("/admin"); 
+        } else {
+          document.location.replace("/dashboard"); //parents route
+        }
       } else {
         console.error("Failed to log in");
         alert("Failed to log in. Please check your credentials and try again.");
