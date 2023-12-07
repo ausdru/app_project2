@@ -5,16 +5,29 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
 -- Schema spark
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Class` ;
+DROP TABLE IF EXISTS `Course` ;
+DROP TABLE IF EXISTS `Login` ;
+DROP TABLE IF EXISTS `Role_type` ;
+DROP TABLE IF EXISTS `Person` ;
+DROP TABLE IF EXISTS `Teacher` ;
+DROP TABLE IF EXISTS `Parent` ;
+
+-- -----------------------------------------------------
+-- Table `Course`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Course` (
+  `course_id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(40) NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`course_id`))
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `Person`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Person` ;
 
 CREATE TABLE IF NOT EXISTS `Person` (
   `party_id` INT NOT NULL AUTO_INCREMENT,
@@ -26,11 +39,9 @@ CREATE TABLE IF NOT EXISTS `Person` (
   PRIMARY KEY (`party_id`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `Role_type`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Role_type` ;
 
 CREATE TABLE IF NOT EXISTS `Role_type` (
   `role_type_id` INT NOT NULL AUTO_INCREMENT,
@@ -38,11 +49,9 @@ CREATE TABLE IF NOT EXISTS `Role_type` (
   PRIMARY KEY (`role_type_id`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `Login`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Login` ;
 
 CREATE TABLE IF NOT EXISTS `Login` (
   `login_id` INT NOT NULL AUTO_INCREMENT,
@@ -63,27 +72,10 @@ CREATE TABLE IF NOT EXISTS `Login` (
     REFERENCES `Role_type` (`role_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-COMMENT = '		';
-
-
--- -----------------------------------------------------
--- Table `Course`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Course` ;
-
-CREATE TABLE IF NOT EXISTS `Course` (
-  `course_id` INT NOT NULL,
-  `title` VARCHAR(40) NOT NULL,
-  `description` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`course_id`))
 ENGINE = InnoDB;
-
-
 -- -----------------------------------------------------
 -- Table `Teacher`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Teacher` ;
 
 CREATE TABLE IF NOT EXISTS `Teacher` (
   `teacher_id` INT NOT NULL,
@@ -98,12 +90,25 @@ CREATE TABLE IF NOT EXISTS `Teacher` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `Parent`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS Parent (
+  `parent_id` INT NOT NULL,
+  `email_address` VARCHAR(40) NOT NULL,
+  `phone_number` VARCHAR(40) NOT NULL,
+  `checkout_code` VARCHAR(10) NULL,
+  PRIMARY KEY (`parent_id`),
+  CONSTRAINT `fk_Parent_Person`
+    FOREIGN KEY (`parent_id`)
+    REFERENCES Person (`party_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `Class`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Class` ;
-
 CREATE TABLE IF NOT EXISTS `Class` (
   `class_id` INT NOT NULL,
   `course_id` INT NOT NULL,
@@ -127,7 +132,18 @@ CREATE TABLE IF NOT EXISTS `Class` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
+CREATE TABLE IF NOT EXISTS Parent (
+  `parent_id` INT NOT NULL,
+  `email_address` VARCHAR(40) NOT NULL,
+  `phone_nb` VARCHAR(40) NOT NULL,
+  `checkout_cd` VARCHAR(10) NULL,
+  PRIMARY KEY (`parent_id`),
+  CONSTRAINT `fk_Parent_Person`
+    FOREIGN KEY (`parent_id`)
+    REFERENCES Person (`party_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
