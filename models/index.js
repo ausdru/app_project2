@@ -1,38 +1,35 @@
-const User = require("./User");
-const Post = require("./Post");
-const Comment = require("./Comment");
 const StudentProfile = require("./studentProfile")
+const Course = require("./Course");
+const Class = require("./Class");
+const Teacher = require("./Teacher");
+const Person = require("./Person");
+const Login = require("./Login");
 
-User.hasMany(Post, {
-  foreignKey: "user_id",
-  onDelete: "CASCADE",
+Class.belongsTo(Course, {
+  foreignKey: 'course_id'
+});
+Course.hasMany(Class, {
+  foreignKey: 'course_id'
+});
+Teacher.belongsTo(Person, {
+  foreignKey: 'teacher_id'
+});
+Person.hasMany(Teacher, {
+  foreignKey: 'person_id'
+});
+Teacher.belongsTo(Class, {
+  foreignKey: 'teacher_id'
+});
+Class.hasMany(Teacher, {
+  foreignKey: 'person_id'
+});
+Login.belongsTo(Person, {
+  foreignKey: 'person_id'
+});
+Person.hasMany(Login, {
+  foreignKey: 'person_id'
 });
 
-User.hasMany(Comment, {
-  foreignKey: "user_id",
-  onDelete: "CASCADE",
-});
-
-Post.belongsTo(User, {
-  foreignKey: "user_id",
-});
-
-Post.hasMany(Comment, {
-  foreignKey: "post_id",
-  onDelete: "CASCADE",
-});
-
-Comment.belongsTo(User, {
-  foreignKey: "user_id",
-});
-
-Comment.belongsTo(Post, {
-  foreignKey: "post_id",
-});
-
-module.exports = {
-  User,
-  Post,
-  Comment,
-  StudentProfile
+module.exports = {Course, Class, Teacher, Person, Login, StudentProfile
 };
+  

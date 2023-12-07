@@ -1,74 +1,46 @@
-
-<!-- Your existing Handlebars template -->
-  <link rel="stylesheet" href="/css/parentForm.css">
 <div class="userPostsContainer">
   <div>
     <h2>You are now logged in, Welcome to SPARK,
       <span id="userName">{{user.username}}</span>!</h2>
 
-    <h1>Emergency Contacts and Allowed Pickups Form</h1>
-
-    <form id="emergencyForm">
-      <!-- Student Information Section -->
-      <h2>Student Information</h2>
-      
-      <label for="studentName">Student Name:</label>
-      <input type="text" id="studentName" name="studentName" required>
-      
-      <label for="studentEmail">Student Email:</label>
-      <input type="text" id="studentEmail" name="studentEmail" required>
-      
-      <label for="studentBirthDate">Student Birth Date:</label>
-      <input type="date" id="studentBirthDate" name="studentBirthDate" required>
-
-      <!-- Emergency Contacts Section -->
-      <h2>Emergency Contacts</h2>
-      
-      <label for="emergencyContact1">Emergency Contact 1:</label>
-      <input type="text" id="emergencyContact1" name="emergencyContact1" required>
-      
-      <label for="emergencyPhone1">Phone Number:</label>
-      <input type="tel" id="emergencyPhone1" name="emergencyPhone1" required>
-      
-      <label for="emergencyContact2">Emergency Contact 2:</label>
-      <input type="text" id="emergencyContact2" name="emergencyContact2" required>
-      
-      <label for="emergencyPhone2">Phone Number:</label>
-      <input type="tel" id="emergencyPhone2" name="emergencyPhone2" required>
-      
-      <!-- Allowed Pickups Section -->
-      <h2>Allowed Pickups</h2>
-      
-      <label for="pickupPerson1">Pickup Person 1:</label>
-      <input type="text" id="pickupPerson1" name="pickupPerson1" required>
-      
-      <label for="pickupPerson2">Pickup Person 2:</label>
-      <input type="text" id="pickupPerson2" name="pickupPerson2" required>
-
-      <!-- Submit Button -->
-      <button  type="submit">Submit</button>
-    </form>
-
-    <!-- Display Section for submitted data -->
-    <div id="displaySection">
-      <strong>Student Information:</strong>
-      <p><span id="displayName"></span> - <span id="displayEmail"></span> - <span id="displayBirthDate"></span></p>
-      <strong>Emergency Contacts:</strong>
-      <ul>
-        <li id="displayEmergency1"></li>
-        <li id="displayEmergency2"></li>
-      </ul>
-      <strong>Allowed Pickups:</strong>
-      <ul>
-        <li id="displayPickup1"></li>
-        <li id="displayPickup2"></li>
-      </ul>
-    </div>
-  </div>
+   
 </div>
 
 
+<h1>Your Kids' Classes</h1>
 
 
-<script src="/js/saveProfile.js"></script>
+
+
+
+
+
+
+
+
+
+
+<h1>SignUp for a class:</h1>
+
+
+  <label for="classCode">Enter Class Code:</label>
+  <input type="text" id="classCode" placeholder="Enter the code">
+  <button onclick="joinClass()">Submit</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/joinClass.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

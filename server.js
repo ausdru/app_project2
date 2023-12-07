@@ -24,6 +24,7 @@ const sess = {
 };
 
 app.use(session(sess));
+// app.use('/public', express.static(path.join(__dirname, 'public')));
 
 const hbs = exphbs.create({ helpers });
 
