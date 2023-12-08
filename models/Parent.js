@@ -40,4 +40,4 @@ Parent.init(
 );
 
 
-module.exports = Teacher;
+module.exports = Parent;
